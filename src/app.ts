@@ -27,10 +27,11 @@ class App {
     }
 
     private templates (): void {
-      this.app.engine('hbs', exphbs({
-        defaultLayout: 'main',
+      let ExphbsOptions: ExphbsOptions = {
         extname: 'hbs'
-      }))
+      }
+      let hbs = exphbs.create(ExphbsOptions).engine
+      this.app.engine('hbs', hbs)
       this.app.set('view engine', 'hbs')
     }
 
